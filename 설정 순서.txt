@@ -1,0 +1,23 @@
+mypyweb 폴더 생성 → polls 폴더 생성 → cd c:/mypyweb/polls → django-admin startproject config . → 설정완료
+
+서버오픈
+python manage.py runserver 입력 후 엔터 → http://127.0.0.1:8000/ ← (웹에서 주소란 기입 후 엔터) → 웹메인 페이지 django로고와 로켓 보이면 완료!
+
+파이참세팅들어감
+상단 file → open File or Project → c드라이버에서 mypyweb → polls
+
+
+
+cmd ctrl + c 하면 새로고침 됨 → python manage.py startapp poll 
+
+(myvenv) c:\mypyweb\polls> python manage.py migrate
+(myvenv) c:\mypyweb\polls> python manage.py createsuperuser
+사용자 이름 설정
+이메일주소
+비밀번호 설정
+y기입
+
+컨트롤 + c 눌러서 새로고침
+웹 이동
+관리자페이지 들어가서
+

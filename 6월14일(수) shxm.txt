@@ -1,0 +1,12 @@
+가상화 폴더: myvenv > 가상화모듈(venv) 설치 > django 설치
+
+프로젝트: django-admin startproject config.
+app(앱): python manage.py sta
+
+웹 프로젝트 - 프레임워크(Django-장고)
+파이참.vs code
+
+작업폴더(따로있음) - mypyweb
+가상화(virtualization) 폴더 - myvenv1, myvenv2
+django3
+django4
