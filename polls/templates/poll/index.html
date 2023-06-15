@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>main 페이지</title>
+</head>
+<body>
+    <h1>설문 투표 사이트 만들기</h1>
+    <h3>{{ cart }}</h3> <!--python 테블릿 언어-->
+    <ul>
+        {% for cart in cartlist %} <!--for문을 사용해볼게요, cartlist에 있는 cart를 가져오겠다-->
+        <li>{{ cart }}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for cart in cartlist %}
+        <li>{{ cart }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
