@@ -10,8 +10,8 @@ def index(request):    # 괄호안에 request 써놔요 # return이 있는 함�
     # return HttpResponse("<h1>안녕~ poll!</h1>") # HttpResponse import 해줬음 # 웹 주소란에 http://127.0.0.1:8000/poll/ 입력하면 브라우저에 나타남
 
 def test(request):
-    cart = "콩나물"  # 모델(데이터) - 딕셔너리형으로 보냄
-    cartlist = ["계란", "콩나물", "생수", "커피"]
+    cart = "코나물"  # 모델(데이터) - 딕셔너리형으로 보냄
+    cartlist = ["겨란", "코나물", "샹수", "콱피"]
     context = {'cart': cart, 'cartlist': cartlist}
     return render(request, 'poll/test.html', context) # context 9번라인에서
 
