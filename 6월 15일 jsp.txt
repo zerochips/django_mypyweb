@@ -1,0 +1,19 @@
+webapp> ch06> regexp
+
+match() 함수 활용 - 문자열 반환(match된 문자 출력)
+/문자/i - 대소문자허용
+/문자/g - 전체 영역에서 일치하는 문자 전부 찾음
+
+let result = text.match(/Ain/i);  - ignoreCase
+""지우고 앞 뒤로 / 붙이면 정규 표현식이 되는겁니다. - global
+
+let result = text.match(/ain/g);
+/g를 붙이면 전체를 찾는 겁니다.
+
+search() 함수 활용 - 찾은 문자열의 위치 반환
+let position = text.search(/Blue/);
+let position = text.search(/blue/g);  - 문자열 중 뒤에 위치한 문자열 찾음
+let position = text.search(/blue/i);   - 문자열 중 앞에 위치한 문자열 위치를 찾음
+
+유효성검사
+정규표현식

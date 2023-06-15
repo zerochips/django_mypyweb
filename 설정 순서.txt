@@ -1,4 +1,4 @@
-mypyweb 폴더 생성 → polls 폴더 생성 → cd c:/mypyweb/polls → django-admin startproject config . → 설정완료
+mypyweb 폴더 생성 → polls 폴더 생성 → cd c:/mypyweb/polls → django-admin startproject config .(장고페이지 표시(안헷갈려도됨)django-admin startproject mysite) → 설정완료
 
 서버오픈
 python manage.py runserver 입력 후 엔터 → http://127.0.0.1:8000/ ← (웹에서 주소란 기입 후 엔터) → 웹메인 페이지 django로고와 로켓 보이면 완료!
@@ -21,3 +21,6 @@ y기입
 웹 이동
 관리자페이지 들어가서
 
+
+
+https://docs.djangoproject.com/ko/4.2/intro/tutorial01/
