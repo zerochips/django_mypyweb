@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>설문 항목</title>
+    <link rel="stylesheet" href="{% static 'poll/css/style.css' %}">
+</head>
+<body>
+    <div id="container">
+        <section id="detail">
+            <h1>설문 항목</h1>
+            <!--<h3>{{ question.question_text }}</h3>-->
+            <hr>
+            <form action="{% url 'poll:vote' question.id %}" method="post"> <!--test할 때 action="" 비워둔채로 확인 오류날 가능성 큼-->
+                {% csrf_token %} <!--보안 무조건 넣어야됨, 닫는건 없음-->
+                <fieldset>
+                    {% if error %}
+                       <p class="error"> {{ error }} </p>
+                    {% endif %}
+                    <legend>{{ question.question_text }}</legend>
+                    {% for choice in question.choice_set.all %}
+                    <p>
+                        <input type="radio" name="choice" value="{{ choice.id }}">
+                        <label>{{ choice.choice_text }}</label>
+                    </p>
+                    {% endfor %}
+                </fieldset>
+                <p><input type="submit" value="투표"></p>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
+<!--
+MVC
+MTV - MODEL TEMPLATES(VIEW) VIEW(CONTROLLER)
+
+전체 데이터 조회
+Question.objects.all()
+-->
+<!--<ul>
+    {% for choice in question.choice_set.all %} &lt;!&ndash;question을 통해서 choice로 간다&ndash;&gt;
+        <li>{{ choice.choice_text }}</li>
+    {% endfor %}
+    </ul>-->

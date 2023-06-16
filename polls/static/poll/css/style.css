@@ -1,0 +1,21 @@
+/* 공통 스타일 */
+#container{width: 80%; margin: 50px auto; }
+h1{color: #00f;}
+a{text-decoration: none;}
+
+/* main 스타일 */
+#main{width: 80%; margin: 0 auto;}
+#main img{width: 200px; height: 200px; margin: 50px 0 0 50px;}
+#main ul{padding-left: 20px;}
+#main ul li{margin: 30px 0; list-style: circle;}
+#main ul li a:hover{text-decoration: underline;}
+
+/* detail 스타일 */
+#detail{width: 80%; margin: 0 auto;}
+#detail form{width: 50%; margin-top: 20px;}
+#detail .error{color: #f00;}
+
+/* result 스타일 */
+#result{width: 80%; margin: 0 auto;}
+#result ul{padding-left: 40px;}
+#result ul li{margin: 20px 0; list-style: circle;}

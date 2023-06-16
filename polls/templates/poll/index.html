@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
+<!-- static 적용하려면 필수로 명시해야 함-->
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>main 페이지</title>
+    <link rel="stylesheet" href="{% static 'poll/css/style.css' %}">
 </head>
 <body>
-    <h1>설문 투표 사이트 만들기</h1>
-    <h3>{{ cart }}</h3> <!--python 테블릿 언어-->
-    <ul>
-        {% for cart in cartlist %} <!--for문을 사용해볼게요, cartlist에 있는 cart를 가져오겠다-->
-        <li>{{ cart }}</li>
-        {% endfor %}
-    </ul>
-    <ul>
-        {% for cart in cartlist %}
-        <li>{{ cart }}</li>
-        {% endfor %}
-    </ul>
+    <div id="container">
+        <section id="main">
+            <h1>설문 목록</h1>
+            <hr>
+            {% if question_list %}
+            <ul>
+                {% for question in question_list %}
+                <li>
+                    <a href="{% url 'poll:detail' question.id %}">
+                    {{ question.question_text }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p>설문이 없습니다.</p>
+            {% endif %}
+            <img src="{% static 'poll/images/vote.png' %}">
+        </section>
+    </div>
 </body>
 </html>
-
