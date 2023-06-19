@@ -10,22 +10,20 @@
 <body>
     <div id="container">
         <section id="main">
-            <h1>설문 목록</h1>
-            <hr>
-            {% if question_list %}
-            <ul>
-                {% for question in question_list %}
-                <li>
-                    <a href="{% url 'poll:detail' question.id %}">
-                    {{ question.question_text }}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-            {% else %}
-                <p>설문이 없습니다.</p>
-            {% endif %}
-            <img src="{% static 'poll/images/vote.png' %}">
+            <div class="poll">
+                <a href="{% url 'poll:poll_list' %}">
+                    <img src="{% static 'poll/images/vote.png' %}" alt="투표">
+                    <p>설문 투표 바로가기</p>
+                </a>
+            </div>
+
+            <div class="ocr">
+                <a href="">
+                    <img src="{% static 'poll/images/ocr.png' %}" alt="투표">
+                    <p>설문 투표 바로가기</p>
+                </a>
+            </div>
+
         </section>
     </div>
 </body>

@@ -3,9 +3,12 @@ from django.shortcuts import render
 from poll.models import Question
 
 def index(request):
+    return render(request, 'poll/index.html')
+
+def poll_list(request):     # index에서 poll_list로 수정하였음
     # 전체 데이터 가져오기
     question_list = Question.objects.all()
-    return render(request, 'poll/index.html', {'question_list': question_list})
+    return render(request, 'poll/poll_list.html', {'question_list': question_list})
     # return HttpResponse("<h1>안녕~ Poll!</h1>")
 
 def detail(request, question_id):
