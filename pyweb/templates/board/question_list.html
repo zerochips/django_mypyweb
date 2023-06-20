@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>안녕하세요</title>
+</head>
+<body>
+    <h1>질문 목록</h1>
+    {% if question_list %}
+        <ul>
+            {% for question in question_list %}
+                <li>
+                    <a href="{% url 'board:detail' question.id %}" >
+                        {{ question.subject }}
+                    </a>
+                </li>
+            {% endfor%}
+        </ul>
+    {% else %}
+        <p>질문이 없습니다.</p>
+    {% endif %}
+    <!-- 질문 등록 버튼 -->
+    <a href="{% url 'board:question_create' %}">질문 등록</a> <!--app_name ='board'를 만들었기 때문에 board:형식으로 사용이 가능하다 urls.py에 표기되어있음-->
+</body>
+</html>
