@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>안녕하세요</title>
-</head>
-<body>
+<!-- header 부분 모두 삭제 body만 남김 base에 다 있기 때문에 -->
+<!-- 상속 받기 -->
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- section -->
+<div class="container my-3"> <!-- 부트스트랩은 id 없고 무조건 class로 설정해줘야한다 -->
     <h1>Pyweb에 오신걸 환영합니다.</h1>
-</body>
-</html>
+</div>
+{% endblock %}
