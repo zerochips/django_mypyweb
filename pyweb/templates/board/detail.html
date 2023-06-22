@@ -15,9 +15,11 @@
                     <div>{{ question.create_date }}</div>
                 </div>
             </div>
-            <!-- 글쓴이와 로그인한 사람과 일치하면 -->
+            <!-- [삭제] 글쓴이와 로그인한 사람과 일치하면 -->
             {% if question.author == request.user %} <!--세션처리 질문한 사람과 같으면 question.author-->
             <div><!-- 요즘엔 onclick을 사용안하고 제이쿼리를 사용함-->
+                <a href="{% url 'board:question_modify' question.id %}"
+                   class="btn btn-sm btn-outline-secondary">수정</a>
                 <a href="#"
                    data-uri="{% url 'board:question_delete' question.id %}"
                    class="delete btn btn-sm btn-outline-secondary">삭제</a>
@@ -41,6 +43,14 @@
                     <div>{{ question.create_date }}</div>
                 </div>
             </div>
+            <!-- [삭제] 글쓴이와 로그인한 사람과 일치하면 -->
+            {% if answer.author == request.user %} <!--세션처리 질문한 사람과 같으면 question.author-->
+            <div><!-- 요즘엔 onclick을 사용안하고 제이쿼리를 사용함-->
+                <a href="#"
+                   data-uri="{% url 'board:answer_delete' answer.id %}"
+                   class="delete btn btn-sm btn-outline-secondary">삭제</a>
+            </div>
+            {% endif %}
         </div>
     </div>
     {% endfor %}

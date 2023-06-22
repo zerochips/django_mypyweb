@@ -1,0 +1,12 @@
+{% extends 'base.html' %}   <!--베이스를 상속받았습니다. -->
+{% block content %}
+<div class="container">
+    <h3>글쓰기</h3>
+    <form action="" method="post"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">저장하기</button>
+    </form>
+</div>
+{% endblock %}
