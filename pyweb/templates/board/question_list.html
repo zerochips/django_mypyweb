@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load board_filter %}
 {% block content %}
 <div class="container my-3">
     <section id="question_list">
@@ -16,7 +17,15 @@
                     {% for question in question_list %}
                     <tr>
                         <!-- models.py에  -->
-                        <td>{{ forloop.counter }}</td>  <!-- 1부터 번호 시작 -->
+                        <!--<td>{{ forloop.counter|add:3 }}</td>-->  <!-- 1부터 번호 시작 add:3 하면 1에 3을 더해서 표시 - 이런걸 탬플릿 태그라고한다 페이지 처리하게되면 역할이 끝났어~ -->
+                        <!-- 탬플릿 태그 -->
+                        <!-- 1페이지 13~4, 2페이지 3~1
+                             13 - 1(시작인덱스1, 11, 21) - (0~9: 현재 인덱스(페이지당 10건씩 보여주는겁니다)) + 1 = 13
+                             pa.count - 전체 게시글 수
+                        -->
+                        <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
+
+
                         <td><a href="{% url 'board:detail' question.id %}">{{ question.subject }}</a></td>
                         <td>{{ question.create_date }}</td>
                         <td>{{ question.author }}</td>
@@ -29,10 +38,52 @@
                 {% endif %}
             </tbody>
         </table>
-    <!-- 질문 등록 버튼 -->
-    <!--app_name ='board'를 만들었기 때문에 board:형식으로 사용이 가능하다 urls.py에 표기되어있음-->
-    <a href="{% url 'board:question_create' %}"
-        class="btn btn-primary">질문 등록</a>   <!-- class 부트스트랩 이름과-->
+        <!-- 페이지 처리 영역 -->
+        <ul class="pagination justify-content-center">
+            <!-- 이전 페이지 -->
+            {% if question_lis.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ question_list.previous_page_number }}">&laquo;</a><!-- 이렇게 하면 왼쪽 화살표가 생겨요 -->
+                </li>
+            {% else %}
+                <li class="page-item disabled"> <!------ 화살표 색상 안보이게 ------>
+                    <a class="page-link" href="">&laquo;</a><!--href="#" 이전 페이지가 있으면 나오게 href=""이전 페이지가 없어도 나오게-->
+                </li>
+            {% endif %}
+            <!-- 현재 페이지 -->
+                {% for page_number in question_list.paginator.page_range %} <!--탬플릿 태그를 써서 -->
+                    <!-- 현재 페이지와 리스트의 페이지가 일치하면 활성화함 -->
+                    {% if page_number == question_list.number %}
+                    <li class="page-item active">
+                        <a class="page-link" href="?page={{ page_number }}">
+                            {{ page_number }}
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}">
+                            {{ page_number }}
+                        </a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            <!-- 다음 페이지 -->
+            {% if question_lis.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?page={{ question_list.next_page_number }}">&raquo;</a><!-- 이렇게 하면 왼쪽 화살표가 생겨요 -->
+                </li>
+            {% else %}
+                <!-- 이전 페이지가 없어도 표시됨-->
+                <li class="page-item disabled"> <!------ 화살표 색상 안보이게 ------>
+                    <a class="page-link" href="">&raquo;</a><!--href="#" 이전 페이지가 있으면 나오게 href=""이전 페이지가 없어도 나오게-->
+                </li>
+            {% endif %}
+        </ul>
+        <!-- 질문 등록 버튼 -->
+        <!--app_name ='board'를 만들었기 때문에 board:형식으로 사용이 가능하다 urls.py에 표기되어있음-->
+        <a href="{% url 'board:question_create' %}"
+            class="btn btn-primary">질문 등록</a>   <!-- class 부트스트랩 이름과-->
     </section>
 </div>
 {% endblock %}
